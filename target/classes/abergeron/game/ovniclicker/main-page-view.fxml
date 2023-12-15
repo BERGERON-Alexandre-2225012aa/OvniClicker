@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="abergeron.game.ovniclicker.MainPageController">
+   <center>
+      <StackPane fx:id="centerStackPane" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-border-color: white;" styleClass="stackpane" stylesheets="@MainPage.css" BorderPane.alignment="CENTER">
+         <children>
+            <Path fx:id="ovniPath" fill="#1f93ff00" stroke="#00aeff" strokeType="INSIDE" StackPane.alignment="CENTER">
+               <elements>
+                  <MoveTo x="-1.0" />
+                  <ArcTo largeArcFlag="true" radiusX="300.0" radiusY="160.0" />
+                  <ClosePath />
+               </elements>
+            </Path>
+            <ImageView fitHeight="370.0" onMouseClicked="#launchOvni" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER">
+               <image>
+                  <Image url="@images/moon.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="clickLabel" onMouseClicked="#launchOvni" text="CLICK" textFill="RED" StackPane.alignment="CENTER">
+               <font>
+                  <Font size="33.0" />
+               </font>
+            </Label>
+            <HBox fx:id="menu" alignment="CENTER" disable="true" prefHeight="100.0" prefWidth="200.0" visible="false">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <VBox alignment="TOP_CENTER" minHeight="300.0" minWidth="300.0" spacing="30.0" style="-fx-background-color: #000c40; -fx-border-color: white;">
+                           <children>
+                              <HBox alignment="TOP_RIGHT">
+                                 <children>
+                                    <ImageView fx:id="closeMenuButton" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#closeMenu" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/closeRed.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets right="5.0" top="5.0" />
+                                       </HBox.margin></ImageView>
+                                 </children>
+                              </HBox>
+                              <Label text="Menu" textFill="#ff8800">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="menuNewSaveButton" minWidth="200.0" mnemonicParsing="false" onAction="#openNewSavePopUp" onMouseEntered="#mouseEnterMenuNewSaveButton" onMouseExited="#mouseExitMenuNewSaveButton" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: white;" text="New Save">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="menuLoadSaveButton" minWidth="200.0" mnemonicParsing="false" onAction="#menuLoadSaveButtonClicked" onMouseEntered="#mouseEnterMenuLoadSaveButton" onMouseExited="#mouseExitMenuLoadSaveButton" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: white;" text="Load Save">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox fx:id="loadLastSavePopUp" alignment="CENTER">
+               <children>
+                  <VBox alignment="CENTER">
+                     <children>
+                        <VBox alignment="CENTER" minHeight="200.0" minWidth="500.0" spacing="30.0" style="-fx-background-color: #000c40; -fx-border-color: white;">
+                           <children>
+                              <Label text="Do you want to load the last save ?" textFill="#ff8800">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </Label>
+                              <HBox alignment="CENTER" spacing="100.0">
+                                 <children>
+                                    <Button fx:id="yesLoadButton" mnemonicParsing="false" onAction="#yesLoadButtonClicked" onMouseEntered="#mouseEnterYesLoadButton" onMouseExited="#mouseExitYesLoadButton" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="YES">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="noLoadButton" mnemonicParsing="false" onAction="#noLoadButtonClicked" onMouseEntered="#mouseEnterNoLoadButton" onMouseExited="#mouseExitNoLoadButton" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="NO">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <Button fx:id="menuButton" disable="true" mnemonicParsing="false" onAction="#openMenu" onMouseEntered="#mouseEnterMenuButton" onMouseExited="#mouseExitMenuButton" style="-fx-background-color: #000c40; -fx-border-color: white;" text="Menu" textFill="#ff8800">
+               <StackPane.margin>
+                  <Insets left="10.0" top="10.0" />
+               </StackPane.margin>
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <HBox fx:id="newSavePopUp" alignment="CENTER" disable="true" visible="false">
+               <children>
+                  <VBox alignment="CENTER">
+                     <children>
+                        <VBox alignment="CENTER" minHeight="200.0" minWidth="500.0" spacing="30.0" style="-fx-background-color: #000c40; -fx-border-color: white;">
+                           <children>
+                              <Label text="Are you sure to save a new progression ?" textFill="#ff8800">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="CENTER" spacing="100.0">
+                                 <children>
+                                    <Button fx:id="yesSaveButton" mnemonicParsing="false" onAction="#newSave" onMouseEntered="#mouseEnterYesSaveButton" onMouseExited="#mouseExitYesSaveButton" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="YES">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="noSaveButton" mnemonicParsing="false" onAction="#noSaveButtonClicked" onMouseEntered="#mouseEnterNoSaveButton" onMouseExited="#mouseExitNoSaveButton" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="NO">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </StackPane>
+   </center>
+   <top>
+      <GridPane alignment="CENTER" style="-fx-background-color: #000c40;" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" />
+          <ColumnConstraints hgrow="SOMETIMES" />
+            <ColumnConstraints hgrow="SOMETIMES" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox alignment="CENTER" spacing="10.0" style="-fx-border-color: white;" GridPane.columnIndex="2">
+               <children>
+                  <Label text="Automatic ovni power" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="automaticOvniPowerLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="210.0" text="0" textAlignment="CENTER" textFill="#64ff00">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" style="-fx-border-color: white;" GridPane.columnIndex="1">
+               <children>
+                  <Label fx:id="scoreLabel" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" prefHeight="45.0" prefWidth="403.0" text="0" textAlignment="CENTER" textFill="RED">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" spacing="10.0" style="-fx-border-color: white;">
+               <children>
+                  <Label text="Ovni power" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="ovniPowerLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="202.0" text="1" textAlignment="CENTER" textFill="#00f6ff">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </GridPane>
+   </top>
+   <bottom>
+      <GridPane alignment="CENTER" style="-fx-background-color: #000c40;" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" />
+          <ColumnConstraints hgrow="SOMETIMES" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox alignment="CENTER" spacing="10.0" style="-fx-border-color: white;">
+               <children>
+                  <Label text="Ovni power" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="ovniPowerCostLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="382.0" text="1 000" textAlignment="CENTER" textFill="RED">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="ovniPowerBuyButton" mnemonicParsing="false" onAction="#onOvniPowerBuyButtonClicked" onMouseEntered="#mouseEnterOvniPowerBuyButton" onMouseExited="#mouseExitOvniPowerBuyButton" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="Buy">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </VBox>
+            <VBox alignment="CENTER" spacing="10.0" style="-fx-border-color: white;" GridPane.columnIndex="1">
+               <children>
+                  <Label text="Automatic ovni power" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="automaticOvniPowerCostLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="369.0" text="5 000" textAlignment="CENTER" textFill="RED">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="automaticOvniPowerBuyButton" mnemonicParsing="false" onAction="#onAutomaticOvniPowerBuyButtonClicked" onMouseEntered="#mouseEnterAutomaticOvniPowerBuyButton" onMouseExited="#mouseExitAutomaticOvniPowerBuyButton" style="-fx-background-color: white; -fx-border-radius: 10; -fx-background-radius: 10;" text="Buy">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </GridPane>
+   </bottom>
+</BorderPane>

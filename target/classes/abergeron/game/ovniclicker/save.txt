@@ -1,0 +1,5 @@
+score:0
+ovniPower:1
+ovniPowerCost:1000
+automaticOvniPower:0
+automaticOvniPowerCost:5000
